@@ -131,6 +131,7 @@ func (a *ACME) CreateClusterConfig(leadership *cluster.Leadership, tlsConfig *tl
 
 	tlsConfig.GetCertificate = a.getCertificate
 	a.TLSConfig = tlsConfig
+	a.TLSConfig.BuildNameToCertificate()
 
 	listener := func(object cluster.Object) error {
 		account := object.(*Account)
